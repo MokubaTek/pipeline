@@ -3,3 +3,5 @@ steps:
   args: ['build', '-t', 'gcr.io/pipelinetest-355200/github.com/mokubatek/pipeline:$SHORT_SHA', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/pipelinetest-355200/github.com/mokubatek/pipeline:$SHORT_SHA']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['beta', 'run', 'deploy', 'pipelinetest-355200', '--region=us-central1', '--platform=managed', '--image=gcr.io/pipelinetest-355200/github.com/mokubatek/pipeline:$SHORT_SHA']
