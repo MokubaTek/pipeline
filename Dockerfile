@@ -1,9 +1,4 @@
-FROM node:current-alpine
-WORKDIR /app
-
-COPY package.json .
-RUN npm install
-
-COPY . .
-EXPOSE 3000
-CMD ["npm", "start"]
+from node:13-slim
+workdir /app
+add . /app
+cmd node server.js
